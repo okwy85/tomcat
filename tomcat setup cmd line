@@ -1,0 +1,16 @@
+#set up ec2 instance and connect to it (AMZ linux server for our tutorial)
+sudo amazon-linux-extras install java-openjdk11
+cd /opt
+#copy install link from apache tomcat website
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.23/bin/apache-tomcat-10.0.23.tar.gz
+ls -l ---------> apache-tomcat-10.0.23.tar.gz
+sudo tar -xvzf apache-tomcat-10.0.23.tar.gz
+mv apache-tomcat-10.0.23 tomcat9
+sudo chown -R ec2-user:ec2-user tomcat9
+ls -l (to confirm owner is changed)
+cd tomcat9
+cd bin
+ ./startup.sh
+ #tomcat is running
+ copy the IP address of the ec2-instance:8080 and connect
+ 
