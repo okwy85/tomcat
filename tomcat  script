@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    tools {
+       maven 'Apache Maven 3.6.0'
+    }
+
+    stages {
+        stage('SCM-Checkout') {
+            steps {
+                git branch: 'main', credentialsId: '05504b30-b936-4acf-9eeb-0a107bb606c5', 
+                url: 'https://github.com/okwy85/tomcat-demo.git'
+            }
+        }
+		stage('Maven-clean-package') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+		stage('tomcat-deployment') {
+            steps {
+                sshagent(['tomcat9']) {
+                sh 'scp -o StrictHostKeyChecking=no target/tomcat-demo.war ec2-user@172.31.5.50:/opt/tomcat9/webapps'
+                }
+            }
+        }
+    }
+}
