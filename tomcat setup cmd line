@@ -34,6 +34,22 @@ cd bin
  #tomcat is running
  copy the IP address of the ubuntu123345567-instance:8080 and connect
  
+ ==========setup users and roles ========================
+ from root
+ cd /opt
+ cd tomcat10
+ cd conf/
+ nano tomcat-users.xml
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="tomcat" password="pass123" roles="manager-gui"/>
+<user username="admin" password="admin123" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+
+./shutdown.sh
+./startup.sh ==> Tomcat should be up and running.
+ 
  ==================restart tomcat ============================
  from root
  cd /opt
