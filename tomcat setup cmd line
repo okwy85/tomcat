@@ -33,3 +33,10 @@ cd bin
  ./startup.sh
  #tomcat is running
  copy the IP address of the ubuntu123345567-instance:8080 and connect
+ 
+ ==================restart tomcat ============================
+ from root
+ cd /opt
+ cd tomcat10
+cd bin
+ ./startup.sh
